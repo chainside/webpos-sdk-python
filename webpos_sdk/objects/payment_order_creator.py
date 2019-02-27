@@ -63,9 +63,9 @@ class PaymentOrderCreator(SdkObject):
 
     }
 
-    def __init__(self, name, type, uuid, deposit_account):
+    def __init__(self, uuid, type, deposit_account, name):
         super().__init__()
-        self.name = name
-        self.type = type
         self.uuid = uuid
+        self.type = type
         self.deposit_account = deposit_account
+        self.name = name

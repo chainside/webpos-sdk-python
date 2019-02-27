@@ -16,7 +16,7 @@ class DeletePaymentOrderAction(ChainsideAuthenticatedAction):
     }
     query_parameters_schema = {}
     route_parameters_schema = {'payment_order_uuid': {
-        'type': 'uuid', 'rules': ['required']}}
+        'rules': ['required'], 'type': 'uuid'}}
     request_body_class = None
     response_body_class = PaymentOrderResponse
     errors = dict(super(ChainsideAuthenticatedAction, ChainsideAuthenticatedAction).errors, **{

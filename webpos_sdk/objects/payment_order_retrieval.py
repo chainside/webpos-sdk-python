@@ -2,10 +2,10 @@
 Nigiri auto-generated file
 """
 from sdkboil.object import SdkObject
-from .payment_order_state import PaymentOrderState
-from .transaction import Transaction
-from .rate_retrieval import RateRetrieval
 from .payment_order_creator import PaymentOrderCreator
+from .transaction import Transaction
+from .payment_order_state import PaymentOrderState
+from .rate_retrieval import RateRetrieval
 from .currency_retrieval import CurrencyRetrieval
 
 
@@ -227,8 +227,8 @@ class PaymentOrderRetrieval(SdkObject):
                     },
                     "in_confirmation": {
                         "rules": [
-                            "nullable",
-                            "required"
+                            "required",
+                            "nullable"
                         ],
                         "schema": {
                             "crypto": {
@@ -249,8 +249,8 @@ class PaymentOrderRetrieval(SdkObject):
                     },
                     "paid": {
                         "rules": [
-                            "nullable",
-                            "required"
+                            "required",
+                            "nullable"
                         ],
                         "schema": {
                             "crypto": {
@@ -278,8 +278,8 @@ class PaymentOrderRetrieval(SdkObject):
                     },
                     "unpaid": {
                         "rules": [
-                            "nullable",
-                            "required"
+                            "required",
+                            "nullable"
                         ],
                         "schema": {
                             "crypto": {
@@ -373,8 +373,8 @@ class PaymentOrderRetrieval(SdkObject):
                     "type": "object"
                 },
                 "rules": [
-                    "nullable",
-                    "required"
+                    "required",
+                    "nullable"
                 ],
                 "type": "array"
             },
@@ -394,34 +394,34 @@ class PaymentOrderRetrieval(SdkObject):
         "type": "object"
     }
     sub_objects = {
-        'state': PaymentOrderState,
-        'transactions': [Transaction],
-        'rate': RateRetrieval,
         'created_by': PaymentOrderCreator,
+        'transactions': [Transaction],
+        'state': PaymentOrderState,
+        'rate': RateRetrieval,
         'currency': CurrencyRetrieval,
 
     }
 
-    def __init__(self, uuid, redirect_url, btc_amount, expires_in, created_at, amount, required_confirmations, state, uri, rate, created_by, expiration_time, currency, callback_url, address, transactions=None, reference=None, chargeback_date=None, details=None, dispute_start_date=None, resolved_at=None):
+    def __init__(self, uri, created_by, expiration_time, callback_url, created_at, address, amount, uuid, state, btc_amount, required_confirmations, rate, currency, expires_in, redirect_url, details=None, chargeback_date=None, transactions=None, resolved_at=None, reference=None, dispute_start_date=None):
         super().__init__()
-        self.uuid = uuid
-        self.redirect_url = redirect_url
-        self.btc_amount = btc_amount
-        self.expires_in = expires_in
-        self.created_at = created_at
-        self.amount = amount
-        self.required_confirmations = required_confirmations
-        self.state = state
-        self.transactions = transactions
-        self.reference = reference
-        self.chargeback_date = chargeback_date
-        self.uri = uri
-        self.rate = rate
         self.details = details
+        self.uri = uri
         self.created_by = created_by
+        self.chargeback_date = chargeback_date
+        self.transactions = transactions
         self.expiration_time = expiration_time
-        self.currency = currency
-        self.callback_url = callback_url
-        self.address = address
-        self.dispute_start_date = dispute_start_date
         self.resolved_at = resolved_at
+        self.callback_url = callback_url
+        self.created_at = created_at
+        self.address = address
+        self.reference = reference
+        self.amount = amount
+        self.uuid = uuid
+        self.dispute_start_date = dispute_start_date
+        self.state = state
+        self.btc_amount = btc_amount
+        self.required_confirmations = required_confirmations
+        self.rate = rate
+        self.currency = currency
+        self.expires_in = expires_in
+        self.redirect_url = redirect_url

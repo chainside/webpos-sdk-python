@@ -24,10 +24,10 @@ class Client(AuthenticatedClient):
         action.payment_order_uuid = payment_order_uuid
         return action.run()
 
-    def payment_update(self, payment_order_uuid, payment_object):
+    def payment_update(self, payment_order_uuid, payment_update_object):
         action = self.factory.make('payment_update')
         action.payment_order_uuid = payment_order_uuid
-        action.payment_object = payment_object
+        action.payment_update_object = payment_update_object
         return action.run()
 
     def delete_payment_order(self, payment_order_uuid):

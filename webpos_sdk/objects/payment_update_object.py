@@ -4,7 +4,7 @@ Nigiri auto-generated file
 from sdkboil.object import SdkObject
 
 
-class PaymentObject(SdkObject):
+class PaymentUpdateObject(SdkObject):
     schema = {
         "rules": [],
         "schema": {

@@ -256,8 +256,8 @@ class PaymentExpiredCallback(SdkObject):
                             },
                             "in_confirmation": {
                                 "rules": [
-                                    "nullable",
-                                    "required"
+                                    "required",
+                                    "nullable"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -278,8 +278,8 @@ class PaymentExpiredCallback(SdkObject):
                             },
                             "paid": {
                                 "rules": [
-                                    "nullable",
-                                    "required"
+                                    "required",
+                                    "nullable"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -307,8 +307,8 @@ class PaymentExpiredCallback(SdkObject):
                             },
                             "unpaid": {
                                 "rules": [
-                                    "nullable",
-                                    "required"
+                                    "required",
+                                    "nullable"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -402,8 +402,8 @@ class PaymentExpiredCallback(SdkObject):
                             "type": "object"
                         },
                         "rules": [
-                            "nullable",
-                            "required"
+                            "required",
+                            "nullable"
                         ],
                         "type": "array"
                     },
@@ -436,9 +436,9 @@ class PaymentExpiredCallback(SdkObject):
         'object': CallbackPaymentOrder
     }
 
-    def __init__(self, event, created_at, object=None, object_type=None):
+    def __init__(self, created_at, event, object_type=None, object=None):
         super().__init__()
-        self.event = event
         self.created_at = created_at
-        self.object = object
         self.object_type = object_type
+        self.object = object
+        self.event = event

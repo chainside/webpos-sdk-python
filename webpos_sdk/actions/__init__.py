@@ -6,7 +6,7 @@ from .get_callbacks import GetCallbacksAction
 
 from .payment_reset import PaymentResetAction
 
-from .payment_update import PaymentAction
+from .payment_update import PaymentUpdateAction
 
 from .delete_payment_order import DeletePaymentOrderAction
 

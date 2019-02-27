@@ -9,7 +9,7 @@ class ChainsideFactory(ActionsFactory):
     actions = {
         'get_callbacks': GetCallbacksAction,
         'payment_reset': PaymentResetAction,
-        'payment_update': PaymentAction,
+        'payment_update': PaymentUpdateAction,
         'delete_payment_order': DeletePaymentOrderAction,
         'get_payment_order': GetPaymentOrderAction,
         'get_web_pos_payments': GetWebPosPaymentsAction,

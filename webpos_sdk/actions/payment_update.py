@@ -6,7 +6,7 @@ from ..objects import *
 from ..exceptions import *
 
 
-class PaymentAction(ChainsideAuthenticatedAction):
+class PaymentUpdateAction(ChainsideAuthenticatedAction):
     route = '/payment-order/{payment_order_uuid}/test/'
     verb = 'PATCH'
     headers = {
@@ -16,8 +16,8 @@ class PaymentAction(ChainsideAuthenticatedAction):
     }
     query_parameters_schema = {}
     route_parameters_schema = {'payment_order_uuid': {
-        'type': 'uuid', 'description': "Payment Order's uuid", 'rules': ['required']}}
-    request_body_class = PaymentObject
+        'rules': ['required'], 'description': "Payment Order's uuid", 'type': 'uuid'}}
+    request_body_class = PaymentUpdateObject
     response_body_class = None
     errors = dict(super(ChainsideAuthenticatedAction, ChainsideAuthenticatedAction).errors, **{
         '3001': NotFoundException,
@@ -33,9 +33,9 @@ class PaymentAction(ChainsideAuthenticatedAction):
         self.route_parameters['payment_order_uuid'] = value
 
     @property
-    def payment_object(self):
+    def payment_update_object(self):
         return self.request_body
 
-    @payment_object.setter
-    def payment_object(self, value):
+    @payment_update_object.setter
+    def payment_update_object(self, value):
         self.request_body = value

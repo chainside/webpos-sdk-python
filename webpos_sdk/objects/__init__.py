@@ -9,23 +9,23 @@ from .callback import Callback
 
 from .payment_order_retrieval import PaymentOrderRetrieval
 
-from .payment_order_state import PaymentOrderState
+from .payment_order_creator import PaymentOrderCreator
 
-from .paid_status import PaidStatus
+from .deposit_account_lite import DepositAccountLite
 
 from .transaction import Transaction
 
 from .out import Out
 
+from .payment_order_state import PaymentOrderState
+
+from .paid_status import PaidStatus
+
 from .rate_retrieval import RateRetrieval
-
-from .payment_order_creator import PaymentOrderCreator
-
-from .deposit_account_lite import DepositAccountLite
 
 from .currency_retrieval import CurrencyRetrieval
 
-from .payment_update_object import PaymentObject
+from .payment_update_object import PaymentUpdateObject
 
 from .payment_order_deletion_response import PaymentOrderResponse
 
