@@ -1,3 +1,5 @@
+import json
+
 from sdkboil.actions import Action
 
 from ..lib.hooks import HeadersHook, AuthorizationHook, AuthenticationHook
@@ -16,6 +18,9 @@ class ChainsideAction(Action):
     request_body_class = None
     response_body_class = None
     errors = {'1004': AccessTokenExpiredException}
+
+    def get_exception_key(self, response):
+        return json.loads(response.body)['error_code']
 
 
 class ChainsideAuthenticatingAction(ChainsideAction):

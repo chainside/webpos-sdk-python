@@ -2,11 +2,11 @@
 Nigiri auto-generated file
 """
 from sdkboil.object import SdkObject
-from .currency_retrieval import CurrencyRetrieval
 from .payment_order_state import PaymentOrderState
+from .transaction import Transaction
 from .rate_retrieval import RateRetrieval
 from .payment_order_creator import PaymentOrderCreator
-from .transaction import Transaction
+from .currency_retrieval import CurrencyRetrieval
 
 
 class CallbackPaymentOrder(SdkObject):
@@ -408,36 +408,36 @@ class CallbackPaymentOrder(SdkObject):
         "type": "object"
     }
     sub_objects = {
-        'currency': CurrencyRetrieval,
         'state': PaymentOrderState,
+        'transactions': [Transaction],
         'rate': RateRetrieval,
         'created_by': PaymentOrderCreator,
-        'transactions': [Transaction],
+        'currency': CurrencyRetrieval,
 
     }
 
-    def __init__(self, currency, btc_amount, required_confirmations, callback_url, amount, created_at, state, expiration_time, expires_in, redirect_url, continue_url, uri, rate, created_by, address, cancel_url, uuid, reference=None, resolved_at=None, details=None, dispute_start_date=None, chargeback_date=None, transactions=None):
+    def __init__(self, expiration_time, uuid, redirect_url, btc_amount, expires_in, created_at, amount, required_confirmations, state, cancel_url, uri, rate, created_by, callback_url, currency, address, continue_url, transactions=None, reference=None, chargeback_date=None, details=None, dispute_start_date=None, resolved_at=None):
         super().__init__()
-        self.currency = currency
-        self.reference = reference
-        self.btc_amount = btc_amount
-        self.required_confirmations = required_confirmations
-        self.callback_url = callback_url
-        self.resolved_at = resolved_at
-        self.amount = amount
-        self.details = details
-        self.created_at = created_at
-        self.state = state
         self.expiration_time = expiration_time
-        self.expires_in = expires_in
+        self.uuid = uuid
         self.redirect_url = redirect_url
-        self.continue_url = continue_url
-        self.dispute_start_date = dispute_start_date
+        self.btc_amount = btc_amount
+        self.expires_in = expires_in
+        self.created_at = created_at
+        self.amount = amount
+        self.required_confirmations = required_confirmations
+        self.state = state
+        self.cancel_url = cancel_url
+        self.transactions = transactions
+        self.reference = reference
+        self.chargeback_date = chargeback_date
         self.uri = uri
         self.rate = rate
+        self.details = details
         self.created_by = created_by
+        self.callback_url = callback_url
+        self.currency = currency
         self.address = address
-        self.chargeback_date = chargeback_date
-        self.transactions = transactions
-        self.cancel_url = cancel_url
-        self.uuid = uuid
+        self.continue_url = continue_url
+        self.dispute_start_date = dispute_start_date
+        self.resolved_at = resolved_at

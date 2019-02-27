@@ -29,7 +29,7 @@ class ClientCredentials(SdkObject):
 
     }
 
-    def __init__(self, scope, grant_type):
+    def __init__(self, grant_type, scope):
         super().__init__()
-        self.scope = scope
         self.grant_type = grant_type
+        self.scope = scope

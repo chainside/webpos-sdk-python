@@ -14,9 +14,20 @@ class Client(AuthenticatedClient):
         super().__init__(config)
         self.login()
 
-    def client_credentials_login(self, client_credentials):
-        action = self.factory.make('client_credentials_login')
-        action.client_credentials = client_credentials
+    def get_callbacks(self, payment_order_uuid):
+        action = self.factory.make('get_callbacks')
+        action.payment_order_uuid = payment_order_uuid
+        return action.run()
+
+    def payment_reset(self, payment_order_uuid):
+        action = self.factory.make('payment_reset')
+        action.payment_order_uuid = payment_order_uuid
+        return action.run()
+
+    def payment_update(self, payment_order_uuid, payment_object):
+        action = self.factory.make('payment_update')
+        action.payment_order_uuid = payment_order_uuid
+        action.payment_object = payment_object
         return action.run()
 
     def delete_payment_order(self, payment_order_uuid):
@@ -39,4 +50,9 @@ class Client(AuthenticatedClient):
     def create_payment_order(self, payment_order):
         action = self.factory.make('create_payment_order')
         action.payment_order = payment_order
+        return action.run()
+
+    def client_credentials_login(self, client_credentials):
+        action = self.factory.make('client_credentials_login')
+        action.client_credentials = client_credentials
         return action.run()
