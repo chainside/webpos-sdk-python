@@ -90,13 +90,13 @@ class PaymentOrderResponse(SdkObject):
 
     }
 
-    def __init__(self, expires_in, address, uri, uuid, amount, expiration_time, rate, redirect_url=None):
+    def __init__(self, expires_in, address, uuid, rate, amount, expiration_time, uri, redirect_url=None):
         super().__init__()
         self.expires_in = expires_in
         self.address = address
-        self.uri = uri
         self.uuid = uuid
+        self.rate = rate
+        self.redirect_url = redirect_url
         self.amount = amount
         self.expiration_time = expiration_time
-        self.redirect_url = redirect_url
-        self.rate = rate
+        self.uri = uri

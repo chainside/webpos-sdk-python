@@ -60,12 +60,12 @@ class PaymentOrder(SdkObject):
 
     }
 
-    def __init__(self, amount, required_confirmations, details, continue_url=None, reference=None, cancel_url=None, callback_url=None):
+    def __init__(self, amount, details, required_confirmations, reference=None, cancel_url=None, callback_url=None, continue_url=None):
         super().__init__()
-        self.continue_url = continue_url
-        self.amount = amount
         self.reference = reference
-        self.required_confirmations = required_confirmations
-        self.details = details
+        self.amount = amount
         self.cancel_url = cancel_url
+        self.details = details
         self.callback_url = callback_url
+        self.continue_url = continue_url
+        self.required_confirmations = required_confirmations

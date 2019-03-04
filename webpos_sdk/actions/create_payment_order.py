@@ -20,6 +20,7 @@ class CreatePaymentOrderAction(ChainsideAuthenticatedAction):
     response_body_class = PaymentOrderResponse
     errors = dict(super(ChainsideAuthenticatedAction, ChainsideAuthenticatedAction).errors, **{
         '0001': ValidationErrorException,
+        '4006': FunctionalityDownException,
     })
 
     @property

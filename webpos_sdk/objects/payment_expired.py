@@ -436,9 +436,9 @@ class PaymentExpiredCallback(SdkObject):
         'object': CallbackPaymentOrder
     }
 
-    def __init__(self, created_at, event, object_type=None, object=None):
+    def __init__(self, event, created_at, object_type=None, object=None):
         super().__init__()
-        self.created_at = created_at
         self.object_type = object_type
         self.event = event
+        self.created_at = created_at
         self.object = object
