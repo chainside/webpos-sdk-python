@@ -21,7 +21,7 @@ It is an extension of the [Sdk-boilerplate]() library.
 Follow these steps to install the SDK library into your system:
 
 ```bash
-pip install webpos-sdk-py 
+pip install chainside-webpos-sdk 
 ```
 
 In order to configure the redis cache backend, you must install the redis server and the python
