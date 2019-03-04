@@ -11,7 +11,7 @@ class ClientCredentialsLoginAction(ChainsideAuthenticatingAction):
     verb = 'POST'
     headers = {
         "Accept": "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
         "X-Api-Version": "v1"
     }
     query_parameters_schema = {}

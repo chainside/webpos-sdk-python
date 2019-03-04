@@ -257,8 +257,8 @@ class PaymentCancelledCallback(SdkObject):
                             },
                             "in_confirmation": {
                                 "rules": [
-                                    "required",
-                                    "nullable"
+                                    "nullable",
+                                    "required"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -279,8 +279,8 @@ class PaymentCancelledCallback(SdkObject):
                             },
                             "paid": {
                                 "rules": [
-                                    "required",
-                                    "nullable"
+                                    "nullable",
+                                    "required"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -308,8 +308,8 @@ class PaymentCancelledCallback(SdkObject):
                             },
                             "unpaid": {
                                 "rules": [
-                                    "required",
-                                    "nullable"
+                                    "nullable",
+                                    "required"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -403,8 +403,8 @@ class PaymentCancelledCallback(SdkObject):
                             "type": "object"
                         },
                         "rules": [
-                            "required",
-                            "nullable"
+                            "nullable",
+                            "required"
                         ],
                         "type": "array"
                     },
@@ -441,5 +441,5 @@ class PaymentCancelledCallback(SdkObject):
         super().__init__()
         self.created_at = created_at
         self.object_type = object_type
-        self.object = object
         self.event = event
+        self.object = object

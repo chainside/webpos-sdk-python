@@ -16,7 +16,7 @@ class PaymentUpdateAction(ChainsideAuthenticatedAction):
     }
     query_parameters_schema = {}
     route_parameters_schema = {'payment_order_uuid': {
-        'rules': ['required'], 'description': "Payment Order's uuid", 'type': 'uuid'}}
+        'type': 'uuid', 'rules': ['required'], 'description': "Payment Order's uuid"}}
     request_body_class = PaymentUpdateObject
     response_body_class = None
     errors = dict(super(ChainsideAuthenticatedAction, ChainsideAuthenticatedAction).errors, **{

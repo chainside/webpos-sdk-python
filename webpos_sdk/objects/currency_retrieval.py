@@ -34,8 +34,8 @@ class CurrencyRetrieval(SdkObject):
 
     }
 
-    def __init__(self, uuid, type, name):
+    def __init__(self, uuid, name, type):
         super().__init__()
         self.uuid = uuid
-        self.type = type
         self.name = name
+        self.type = type

@@ -257,8 +257,8 @@ class PaymentChargebackCallback(SdkObject):
                             },
                             "in_confirmation": {
                                 "rules": [
-                                    "required",
-                                    "nullable"
+                                    "nullable",
+                                    "required"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -279,8 +279,8 @@ class PaymentChargebackCallback(SdkObject):
                             },
                             "paid": {
                                 "rules": [
-                                    "required",
-                                    "nullable"
+                                    "nullable",
+                                    "required"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -308,8 +308,8 @@ class PaymentChargebackCallback(SdkObject):
                             },
                             "unpaid": {
                                 "rules": [
-                                    "required",
-                                    "nullable"
+                                    "nullable",
+                                    "required"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -403,8 +403,8 @@ class PaymentChargebackCallback(SdkObject):
                             "type": "object"
                         },
                         "rules": [
-                            "required",
-                            "nullable"
+                            "nullable",
+                            "required"
                         ],
                         "type": "array"
                     },
@@ -441,5 +441,5 @@ class PaymentChargebackCallback(SdkObject):
         super().__init__()
         self.created_at = created_at
         self.object_type = object_type
-        self.object = object
         self.event = event
+        self.object = object
