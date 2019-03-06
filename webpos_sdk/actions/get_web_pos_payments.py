@@ -15,7 +15,7 @@ class GetWebPosPaymentsAction(ChainsideAuthenticatedAction):
         "X-Api-Version": "v1"
     }
     query_parameters_schema = {'status': {'rules': [
-        'in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback'], 'description': 'Status of the payment orders to retrieve', 'type': 'string'}}
+        'in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback'], 'type': 'string', 'description': 'Status of the payment orders to retrieve'}}
     route_parameters_schema = {'pos_uuid': {
         'rules': ['required'], 'type': 'uuid'}}
     request_body_class = None

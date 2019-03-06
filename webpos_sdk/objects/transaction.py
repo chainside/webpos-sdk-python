@@ -81,12 +81,12 @@ class Transaction(SdkObject):
 
     }
 
-    def __init__(self, blockchain_status, outs, created_at, outs_sum, normalized_txid, status, txid):
+    def __init__(self, blockchain_status, txid, created_at, outs_sum, status, outs, normalized_txid):
         super().__init__()
         self.blockchain_status = blockchain_status
-        self.outs = outs
+        self.txid = txid
         self.created_at = created_at
         self.outs_sum = outs_sum
-        self.normalized_txid = normalized_txid
         self.status = status
-        self.txid = txid
+        self.outs = outs
+        self.normalized_txid = normalized_txid

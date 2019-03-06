@@ -16,7 +16,7 @@ class PaymentResetAction(ChainsideAuthenticatedAction):
     }
     query_parameters_schema = {}
     route_parameters_schema = {'payment_order_uuid': {
-        'rules': ['required'], 'description': "Payment Order's uuid", 'type': 'uuid'}}
+        'rules': ['required'], 'type': 'uuid', 'description': "Payment Order's uuid"}}
     request_body_class = None
     response_body_class = PaymentOrderRetrieval
     errors = dict(super(ChainsideAuthenticatedAction, ChainsideAuthenticatedAction).errors, **{

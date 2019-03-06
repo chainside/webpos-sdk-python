@@ -437,9 +437,9 @@ class PaymentDisputeStartCallback(SdkObject):
         'object': CallbackPaymentOrder
     }
 
-    def __init__(self, event, created_at, object=None, object_type=None):
+    def __init__(self, event, created_at, object_type=None, object=None):
         super().__init__()
-        self.event = event
-        self.object = object
-        self.created_at = created_at
         self.object_type = object_type
+        self.object = object
+        self.event = event
+        self.created_at = created_at

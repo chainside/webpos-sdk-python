@@ -96,15 +96,15 @@ class PaymentOrderState(SdkObject):
     }
     sub_objects = {
         'paid': PaidStatus,
-        'unpaid': PaidStatus,
         'in_confirmation': PaidStatus,
+        'unpaid': PaidStatus,
 
     }
 
-    def __init__(self, blockchain_status, status, paid=None, unpaid=None, in_confirmation=None):
+    def __init__(self, blockchain_status, status, paid=None, in_confirmation=None, unpaid=None):
         super().__init__()
         self.blockchain_status = blockchain_status
         self.paid = paid
+        self.in_confirmation = in_confirmation
         self.unpaid = unpaid
         self.status = status
-        self.in_confirmation = in_confirmation

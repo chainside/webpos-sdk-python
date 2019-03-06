@@ -48,7 +48,8 @@ class PaymentOrder(SdkObject):
             },
             "required_confirmations": {
                 "rules": [
-                    "min:0"
+                    "min:0",
+                    "nullable"
                 ],
                 "type": "integer"
             }
@@ -59,12 +60,12 @@ class PaymentOrder(SdkObject):
 
     }
 
-    def __init__(self, amount, details, required_confirmations=None, callback_url=None, cancel_url=None, reference=None, continue_url=None):
+    def __init__(self, amount, details, cancel_url=None, callback_url=None, required_confirmations=None, continue_url=None, reference=None):
         super().__init__()
-        self.required_confirmations = required_confirmations
-        self.callback_url = callback_url
-        self.cancel_url = cancel_url
         self.amount = amount
-        self.reference = reference
-        self.details = details
+        self.cancel_url = cancel_url
+        self.callback_url = callback_url
+        self.required_confirmations = required_confirmations
         self.continue_url = continue_url
+        self.details = details
+        self.reference = reference
