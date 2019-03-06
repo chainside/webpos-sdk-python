@@ -257,8 +257,8 @@ class PaymentChargebackCallback(SdkObject):
                             },
                             "in_confirmation": {
                                 "rules": [
-                                    "nullable",
-                                    "required"
+                                    "required",
+                                    "nullable"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -279,8 +279,8 @@ class PaymentChargebackCallback(SdkObject):
                             },
                             "paid": {
                                 "rules": [
-                                    "nullable",
-                                    "required"
+                                    "required",
+                                    "nullable"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -308,8 +308,8 @@ class PaymentChargebackCallback(SdkObject):
                             },
                             "unpaid": {
                                 "rules": [
-                                    "nullable",
-                                    "required"
+                                    "required",
+                                    "nullable"
                                 ],
                                 "schema": {
                                     "crypto": {
@@ -403,8 +403,8 @@ class PaymentChargebackCallback(SdkObject):
                             "type": "object"
                         },
                         "rules": [
-                            "nullable",
-                            "required"
+                            "required",
+                            "nullable"
                         ],
                         "type": "array"
                     },
@@ -437,9 +437,9 @@ class PaymentChargebackCallback(SdkObject):
         'object': CallbackPaymentOrder
     }
 
-    def __init__(self, event, created_at, object_type=None, object=None):
+    def __init__(self, event, created_at, object=None, object_type=None):
         super().__init__()
-        self.object_type = object_type
         self.event = event
-        self.created_at = created_at
         self.object = object
+        self.created_at = created_at
+        self.object_type = object_type

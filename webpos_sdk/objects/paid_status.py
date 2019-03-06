@@ -28,7 +28,7 @@ class PaidStatus(SdkObject):
 
     }
 
-    def __init__(self, fiat, crypto):
+    def __init__(self, crypto, fiat):
         super().__init__()
-        self.fiat = fiat
         self.crypto = crypto
+        self.fiat = fiat

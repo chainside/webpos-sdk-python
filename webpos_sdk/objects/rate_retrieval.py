@@ -34,8 +34,8 @@ class RateRetrieval(SdkObject):
 
     }
 
-    def __init__(self, value, source, created_at):
+    def __init__(self, value, created_at, source):
         super().__init__()
         self.value = value
-        self.source = source
         self.created_at = created_at
+        self.source = source

@@ -227,8 +227,8 @@ class PaymentOrderList(SdkObject):
                                 },
                                 "in_confirmation": {
                                     "rules": [
-                                        "nullable",
-                                        "required"
+                                        "required",
+                                        "nullable"
                                     ],
                                     "schema": {
                                         "crypto": {
@@ -249,8 +249,8 @@ class PaymentOrderList(SdkObject):
                                 },
                                 "paid": {
                                     "rules": [
-                                        "nullable",
-                                        "required"
+                                        "required",
+                                        "nullable"
                                     ],
                                     "schema": {
                                         "crypto": {
@@ -278,8 +278,8 @@ class PaymentOrderList(SdkObject):
                                 },
                                 "unpaid": {
                                     "rules": [
-                                        "nullable",
-                                        "required"
+                                        "required",
+                                        "nullable"
                                     ],
                                     "schema": {
                                         "crypto": {
@@ -373,8 +373,8 @@ class PaymentOrderList(SdkObject):
                                 "type": "object"
                             },
                             "rules": [
-                                "nullable",
-                                "required"
+                                "required",
+                                "nullable"
                             ],
                             "type": "array"
                         },
@@ -394,8 +394,8 @@ class PaymentOrderList(SdkObject):
                     "type": "object"
                 },
                 "rules": [
-                    "nullable",
-                    "required"
+                    "required",
+                    "nullable"
                 ],
                 "type": "array"
             }

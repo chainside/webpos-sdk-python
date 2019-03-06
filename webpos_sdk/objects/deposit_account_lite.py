@@ -34,8 +34,8 @@ class DepositAccountLite(SdkObject):
 
     }
 
-    def __init__(self, uuid, type, name):
+    def __init__(self, name, uuid, type):
         super().__init__()
+        self.name = name
         self.uuid = uuid
         self.type = type
-        self.name = name
