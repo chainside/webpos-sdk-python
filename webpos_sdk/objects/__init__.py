@@ -13,11 +13,9 @@ from .callback import Callback
 
 from .payment_order_retrieval import PaymentOrderRetrieval
 
-from .payment_order_state import PaymentOrderState
+from .transaction import Transaction
 
-from .paid_status import PaidStatus
-
-from .rate_retrieval import RateRetrieval
+from .out import Out
 
 from .currency_retrieval import CurrencyRetrieval
 
@@ -25,9 +23,11 @@ from .payment_order_creator import PaymentOrderCreator
 
 from .deposit_account_lite import DepositAccountLite
 
-from .transaction import Transaction
+from .payment_order_state import PaymentOrderState
 
-from .out import Out
+from .paid_status import PaidStatus
+
+from .rate_retrieval import RateRetrieval
 
 from .payment_update_object import PaymentUpdateObject
 
