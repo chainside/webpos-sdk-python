@@ -14,14 +14,14 @@ developed with :heart: by <a href="https://www.chainside.net">chainside</a>
 # Introduction
 
 This project is the **official** SDK library for the integration with the [Chainside Pay]() Platform.
-It is an extension of the [Sdk-boilerplate]() library.
- 
+
+
 # Installation
 
 Follow these steps to install the SDK library into your system:
 
 ```bash
-pip install chainside-webpos-sdk 
+pip install chainside-webpos-sdk
 ```
 
 In order to configure the redis cache backend, you must install the redis server and the python
@@ -62,10 +62,10 @@ used by the library:
 | **client_id** | _string_ | Yes | `null` | Your WebPos client id |
 | **secret** | _string_ | Yes | `null` | Your WebPos secret |
 | **http** |  |  | Http further configuration |
- 
+
 _http_ is a further configuration for the actual sending of requests. It can be configured
  by specifying the following parameters (if not specified, a default is provided)
- 
+
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | **verify_ssl** | _string_ | No | true | Wheter to perform ssl verification  |
@@ -99,7 +99,7 @@ object which is a singleton in the application and uses a dictionary to store va
 
 The Library exposes a _client_ object which is instantiated with the system configuration and
 provides an high-level interface to send requests. Client's instances take care of compiling and
-sending http request and parse responses into [SdkObject](#Objects) instances. 
+sending http request and parse responses into [SdkObject](#Objects) instances.
 
 ## Objects
 
@@ -109,7 +109,7 @@ class which is either the input of a _client_ instance method (for creation) or 
 
 ## Callbacks
 
-Callbacks are requests sent by the server to your application in order to notify about some events. 
+Callbacks are requests sent by the server to your application in order to notify about some events.
 Every callback is sent **only to HTTPS** webhooks and will be securely signed by the server in order to be verified.
 
 # Usage
@@ -147,11 +147,11 @@ methods to send requests:
 
 | Method |
 |--------|
-| `client_credentials_login`(client_credentials:ClientCredentials) : [ClientCredentialsLoginResponse](#ClientCredentialsLoginResponse)| 
-| `delete_payment_order`(payment_order_uuid:uuid) : [PaymentOrderResponse](#PaymentOrderResponse)| 
-| `get_payment_order`(payment_order_uuid:uuid) : [PaymentOrderRetrieval](#PaymentOrderRetrieval)| 
-| `get_web_pos_payments`(pos_uuid:uuid,status:string=None) : [PaymentOrderList](#PaymentOrderList)| 
-| `create_payment_order`(payment_order:PaymentOrder) : [PaymentOrderResponse](#PaymentOrderResponse)| 
+| `client_credentials_login`(client_credentials:ClientCredentials) : [ClientCredentialsLoginResponse](#ClientCredentialsLoginResponse)|
+| `delete_payment_order`(payment_order_uuid:uuid) : [PaymentOrderResponse](#PaymentOrderResponse)|
+| `get_payment_order`(payment_order_uuid:uuid) : [PaymentOrderRetrieval](#PaymentOrderRetrieval)|
+| `get_web_pos_payments`(pos_uuid:uuid,status:string=None) : [PaymentOrderList](#PaymentOrderList)|
+| `create_payment_order`(payment_order:PaymentOrder) : [PaymentOrderResponse](#PaymentOrderResponse)|
 
 
 
@@ -435,7 +435,7 @@ conf = {
         }
 context = ChainsideApiContext(conf)
 handler = ChainsideCallbacksHandler(context)
-callback_sdk_object = handler.parse(request.headers, request.body) 
+callback_sdk_object = handler.parse(request.headers, request.body)
 # The request body should be the raw body ( in bytes ) of the request since it's used to compute the signature
 ```
 
@@ -470,4 +470,3 @@ discouraged. Consider posting an issue if you need to signal any problem with th
 # Security Issues
 
 In case of a discovery of an actual or potential security issue please contact us at [info@chainside.net](mailto:info@chaniside.net)
-
