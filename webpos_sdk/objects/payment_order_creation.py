@@ -18,32 +18,39 @@ class PaymentOrder(SdkObject):
             "callback_url": {
                 "rules": [
                     "regex[https_url]:^https://",
-                    "nullable"
+                    "nullable",
+                    "maxlen:300"
                 ],
                 "type": "url"
             },
             "cancel_url": {
                 "rules": [
                     "regex[https_url]:^https://",
-                    "nullable"
+                    "nullable",
+                    "maxlen:300"
                 ],
                 "type": "url"
             },
             "continue_url": {
                 "rules": [
                     "regex[https_url]:^https://",
-                    "nullable"
+                    "nullable",
+                    "maxlen:300"
                 ],
                 "type": "url"
             },
             "details": {
                 "rules": [
-                    "required"
+                    "maxlen:300",
+                    "nullable"
                 ],
                 "type": "string"
             },
             "reference": {
-                "rules": [],
+                "rules": [
+                    "maxlen:300",
+                    "nullable"
+                ],
                 "type": "string"
             },
             "required_confirmations": {
@@ -60,12 +67,12 @@ class PaymentOrder(SdkObject):
 
     }
 
-    def __init__(self, amount, details, cancel_url=None, required_confirmations=None, reference=None, callback_url=None, continue_url=None):
+    def __init__(self, amount, details=None, reference=None, cancel_url=None, callback_url=None, required_confirmations=None, continue_url=None):
         super().__init__()
+        self.details = details
+        self.reference = reference
         self.cancel_url = cancel_url
+        self.callback_url = callback_url
         self.required_confirmations = required_confirmations
         self.amount = amount
-        self.reference = reference
-        self.details = details
-        self.callback_url = callback_url
         self.continue_url = continue_url

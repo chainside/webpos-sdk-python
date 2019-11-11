@@ -9,6 +9,10 @@ class PaymentOrderCreator(SdkObject):
     schema = {
         "rules": [],
         "schema": {
+            "active": {
+                "rules": [],
+                "type": "boolean"
+            },
             "deposit_account": {
                 "rules": [
                     "required"
@@ -45,7 +49,7 @@ class PaymentOrderCreator(SdkObject):
             "type": {
                 "rules": [
                     "required",
-                    "in:web"
+                    "in:web,mobile"
                 ],
                 "type": "string"
             },
@@ -63,9 +67,10 @@ class PaymentOrderCreator(SdkObject):
 
     }
 
-    def __init__(self, name, type, uuid, deposit_account):
+    def __init__(self, type, deposit_account, name, uuid, active=None):
         super().__init__()
-        self.name = name
+        self.active = active
         self.type = type
-        self.uuid = uuid
         self.deposit_account = deposit_account
+        self.name = name
+        self.uuid = uuid

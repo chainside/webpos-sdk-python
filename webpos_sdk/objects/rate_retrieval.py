@@ -14,10 +14,18 @@ class RateRetrieval(SdkObject):
                 ],
                 "type": "ISO_8601_date"
             },
+            "from": {
+                "rules": [],
+                "type": "string"
+            },
             "source": {
                 "rules": [
                     "required"
                 ],
+                "type": "string"
+            },
+            "to": {
+                "rules": [],
                 "type": "string"
             },
             "value": {
@@ -34,8 +42,10 @@ class RateRetrieval(SdkObject):
 
     }
 
-    def __init__(self, source, created_at, value):
+    def __init__(self, created_at, value, source, to=None, from_=None):
         super().__init__()
-        self.source = source
         self.created_at = created_at
         self.value = value
+        self.to = to
+        self.from_ = from_
+        self.source = source

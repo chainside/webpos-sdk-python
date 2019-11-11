@@ -34,8 +34,7 @@ class PaymentOrderList(SdkObject):
                         },
                         "callback_url": {
                             "rules": [
-                                "regex[https_url]:^https://",
-                                "required"
+                                "regex[https_url]:^https://"
                             ],
                             "type": "url"
                         },
@@ -97,7 +96,7 @@ class PaymentOrderList(SdkObject):
                                 "type": {
                                     "rules": [
                                         "required",
-                                        "in:web"
+                                        "in:web,mobile"
                                     ],
                                     "type": "string"
                                 },
@@ -139,7 +138,6 @@ class PaymentOrderList(SdkObject):
                         },
                         "details": {
                             "rules": [
-                                "required",
                                 "nullable"
                             ],
                             "type": "string"
@@ -200,8 +198,7 @@ class PaymentOrderList(SdkObject):
                         },
                         "redirect_url": {
                             "rules": [
-                                "regex[https_url]:^https://",
-                                "required"
+                                "regex[https_url]:^https://"
                             ],
                             "type": "url"
                         },
@@ -385,8 +382,8 @@ class PaymentOrderList(SdkObject):
                                 "type": "object"
                             },
                             "rules": [
-                                "nullable",
-                                "required"
+                                "required",
+                                "nullable"
                             ],
                             "type": "array"
                         },
@@ -410,6 +407,18 @@ class PaymentOrderList(SdkObject):
                     "nullable"
                 ],
                 "type": "array"
+            },
+            "total_items": {
+                "rules": [
+                    "required"
+                ],
+                "type": "integer"
+            },
+            "total_pages": {
+                "rules": [
+                    "required"
+                ],
+                "type": "integer"
             }
         },
         "type": "object"
@@ -419,6 +428,8 @@ class PaymentOrderList(SdkObject):
 
     }
 
-    def __init__(self, paymentorders=None):
+    def __init__(self, total_pages, total_items, paymentorders=None):
         super().__init__()
         self.paymentorders = paymentorders
+        self.total_pages = total_pages
+        self.total_items = total_items

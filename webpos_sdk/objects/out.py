@@ -27,7 +27,7 @@ class Out(SdkObject):
 
     }
 
-    def __init__(self, amount, n):
+    def __init__(self, n, amount):
         super().__init__()
-        self.amount = amount
         self.n = n
+        self.amount = amount

@@ -126,7 +126,7 @@ class PaymentDisputeStartCallback(SdkObject):
                             "type": {
                                 "rules": [
                                     "required",
-                                    "in:web"
+                                    "in:web,mobile"
                                 ],
                                 "type": "string"
                             },
@@ -414,8 +414,8 @@ class PaymentDisputeStartCallback(SdkObject):
                             "type": "object"
                         },
                         "rules": [
-                            "nullable",
-                            "required"
+                            "required",
+                            "nullable"
                         ],
                         "type": "array"
                     },
@@ -448,9 +448,9 @@ class PaymentDisputeStartCallback(SdkObject):
         'object': CallbackPaymentOrder
     }
 
-    def __init__(self, event, created_at, object=None, object_type=None):
+    def __init__(self, created_at, event, object_type=None, object=None):
         super().__init__()
-        self.event = event
-        self.object = object
         self.created_at = created_at
+        self.event = event
         self.object_type = object_type
+        self.object = object

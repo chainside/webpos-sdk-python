@@ -22,6 +22,12 @@ class PaymentOrderResponse(SdkObject):
                 ],
                 "type": "integer"
             },
+            "created_at": {
+                "rules": [
+                    "nullable"
+                ],
+                "type": "ISO_8601_date"
+            },
             "expiration_time": {
                 "rules": [
                     "required"
@@ -77,6 +83,12 @@ class PaymentOrderResponse(SdkObject):
                 ],
                 "type": "url"
             },
+            "reference": {
+                "rules": [
+                    "nullable"
+                ],
+                "type": "string"
+            },
             "uri": {
                 "rules": [
                     "regex:^",
@@ -98,13 +110,15 @@ class PaymentOrderResponse(SdkObject):
 
     }
 
-    def __init__(self, expiration_time, uri, amount, rate, address, expires_in, uuid, redirect_url=None):
+    def __init__(self, address, expires_in, uri, rate, amount, expiration_time, uuid, redirect_url=None, created_at=None, reference=None):
         super().__init__()
-        self.expiration_time = expiration_time
-        self.uri = uri
-        self.amount = amount
-        self.rate = rate
         self.address = address
-        self.expires_in = expires_in
         self.redirect_url = redirect_url
+        self.expires_in = expires_in
+        self.uri = uri
+        self.rate = rate
+        self.created_at = created_at
+        self.amount = amount
+        self.expiration_time = expiration_time
         self.uuid = uuid
+        self.reference = reference
