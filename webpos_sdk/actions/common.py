@@ -2,7 +2,7 @@ import json
 
 from sdkboil.actions import Action
 
-from ..lib.hooks import HeadersHook, AuthorizationHook, AuthenticationHook
+from ..lib.hooks import HeadersHook, AuthorizationHook, AuthenticationHook, RequestIdHook
 from ..exceptions import AccessTokenExpiredException
 from ..objects import ClientCredentials
 
@@ -10,7 +10,7 @@ from ..objects import ClientCredentials
 class ChainsideAction(Action):
     presend_hooks = [HeadersHook]
     success_hooks = []
-    failure_hooks = []
+    failure_hooks = [RequestIdHook]
     route = ''
     verb = ''
     query_parameters_schema = {}

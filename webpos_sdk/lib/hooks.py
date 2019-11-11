@@ -1,3 +1,5 @@
+import json
+
 from base64 import b64encode
 
 from .constants import *
@@ -25,3 +27,14 @@ class AuthenticationHook(PresendHook):
             client_id, secret).encode()).decode()
         self.request.headers[headers.AUTHORIZATION] = 'Basic {}'.format(
             basic_header)
+
+
+class RequestIdHook(FailureHook):
+    def run(self):
+        try:
+            response_body = json.loads(self.response.body)
+            request_id = response_body.get('request_id')
+            self.exception.request_id = request_id
+        except Exception:
+            # We can't retrieve the request id from the response body
+            pass
