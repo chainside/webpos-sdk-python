@@ -5,5 +5,5 @@ REDIS_CACHE = 'redis'
 DJANGO_CACHE = 'django'
 DICT_CACHE = 'dict'
 
-CHAINSIDE_API_HOSTNAME = 'https://api.chainside.net'
-CHAINSIDE_SANDBOX_API_HOSTAME = 'https://api.sandbox.chainside.net'
+CHAINSIDE_API_HOSTNAME = 'https://api.webpos.chainside.net'
+CHAINSIDE_SANDBOX_API_HOSTAME = 'https://api.sandbox.webpos.chainside.net'
