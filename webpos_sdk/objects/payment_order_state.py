@@ -18,8 +18,8 @@ class PaymentOrderState(SdkObject):
     },
     "in_confirmation": {
       "rules": [
-        "nullable",
-        "required"
+        "required",
+        "nullable"
       ],
       "schema": {
         "crypto": {
@@ -40,8 +40,8 @@ class PaymentOrderState(SdkObject):
     },
     "paid": {
       "rules": [
-        "nullable",
-        "required"
+        "required",
+        "nullable"
       ],
       "schema": {
         "crypto": {
@@ -69,8 +69,8 @@ class PaymentOrderState(SdkObject):
     },
     "unpaid": {
       "rules": [
-        "nullable",
-        "required"
+        "required",
+        "nullable"
       ],
       "schema": {
         "crypto": {
@@ -93,15 +93,15 @@ class PaymentOrderState(SdkObject):
   "type": "object"
 }
     sub_objects = {
-                    'paid': PaidStatus,
-        'in_confirmation': PaidStatus,
+                    'in_confirmation': PaidStatus,
+        'paid': PaidStatus,
         'unpaid': PaidStatus,
 
         }
-    def __init__(self, blockchain_status,status,paid=None,in_confirmation=None,unpaid=None):
+    def __init__(self, status,blockchain_status,in_confirmation=None,unpaid=None,paid=None):
         super().__init__()
-        self.paid = paid
         self.in_confirmation = in_confirmation
         self.unpaid = unpaid
-        self.blockchain_status = blockchain_status
         self.status = status
+        self.paid = paid
+        self.blockchain_status = blockchain_status

@@ -267,8 +267,8 @@ class PaymentChargebackCallback(SdkObject):
             },
             "in_confirmation": {
               "rules": [
-                "nullable",
-                "required"
+                "required",
+                "nullable"
               ],
               "schema": {
                 "crypto": {
@@ -289,8 +289,8 @@ class PaymentChargebackCallback(SdkObject):
             },
             "paid": {
               "rules": [
-                "nullable",
-                "required"
+                "required",
+                "nullable"
               ],
               "schema": {
                 "crypto": {
@@ -309,17 +309,10 @@ class PaymentChargebackCallback(SdkObject):
               },
               "type": "object"
             },
-            "status": {
-              "rules": [
-                "in:pending,paid,cancelled,expired,network_dispute,chargeback",
-                "required"
-              ],
-              "type": "string"
-            },
             "unpaid": {
               "rules": [
-                "nullable",
-                "required"
+                "required",
+                "nullable"
               ],
               "schema": {
                 "crypto": {
@@ -413,8 +406,8 @@ class PaymentChargebackCallback(SdkObject):
             "type": "object"
           },
           "rules": [
-            "nullable",
-            "required"
+            "required",
+            "nullable"
           ],
           "type": "array"
         },
@@ -446,9 +439,9 @@ class PaymentChargebackCallback(SdkObject):
     sub_objects = {
             'object': CallbackPaymentOrder
         }
-    def __init__(self, event,created_at,object_type=None,object=None):
+    def __init__(self, event,created_at,object=None,object_type=None):
         super().__init__()
-        self.event = event
-        self.created_at = created_at
-        self.object_type = object_type
         self.object = object
+        self.event = event
+        self.object_type = object_type
+        self.created_at = created_at

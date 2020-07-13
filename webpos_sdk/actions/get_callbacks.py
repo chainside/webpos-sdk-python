@@ -18,7 +18,7 @@ class GetCallbacksAction(ChainsideAuthenticatedAction):
     "X-Api-Version": "v1"
 }
     query_parameters_schema = {}
-    route_parameters_schema = {'payment_order_uuid': {'type': 'uuid', 'rules': ['required']}}
+    route_parameters_schema = {'payment_order_uuid': {'rules': ['required'], 'type': 'uuid'}}
     request_body_class = None
     response_body_class = CallbackList
     errors = dict(super(ChainsideAuthenticatedAction, ChainsideAuthenticatedAction).errors, **{

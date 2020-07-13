@@ -17,7 +17,7 @@ class GetPaymentOrdersAction(ChainsideAuthenticatedAction):
     "Content-Type": "application/json",
     "X-Api-Version": "v1"
 }
-    query_parameters_schema = {'status': {'type': 'string', 'description': 'Status of the payment orders to retrieve', 'rules': ['in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback']}, 'page': {'type': 'integer', 'description': 'Index of the page to be returned (default: 0)', 'rules': ['nullable', 'min:0']}, 'sort_order': {'type': 'string', 'description': 'Ordering to be used for the sort (default: desc)', 'rules': ['in:asc,desc', 'nullable']}, 'page_size': {'type': 'integer', 'description': 'Size of the returned page (default: 20)', 'rules': ['nullable', 'max:40']}, 'sort_by': {'type': 'string', 'description': 'Field used to sort pages (default: created_at)', 'rules': ['in:amount,created_at', 'nullable']}}
+    query_parameters_schema = {'sort_order': {'rules': ['in:asc,desc', 'nullable'], 'type': 'string', 'description': 'Ordering to be used for the sort (default: desc)'}, 'page_size': {'rules': ['nullable', 'max:40'], 'type': 'integer', 'description': 'Size of the returned page (default: 20)'}, 'status': {'rules': ['in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback'], 'type': 'string', 'description': 'Status of the payment orders to retrieve'}, 'sort_by': {'rules': ['in:amount,created_at', 'nullable'], 'type': 'string', 'description': 'Field used to sort pages (default: created_at)'}, 'page': {'rules': ['nullable', 'min:0'], 'type': 'integer', 'description': 'Index of the page to be returned (default: 0)'}}
     route_parameters_schema = {}
     request_body_class = None
     response_body_class = PaymentOrderList
@@ -26,20 +26,6 @@ class GetPaymentOrdersAction(ChainsideAuthenticatedAction):
 })
 
 
-
-    @property
-    def status(self):
-        return self.query_parameters['status']
-    @status.setter
-    def status(self, value):
-        self.query_parameters['status'] = value
-
-    @property
-    def page(self):
-        return self.query_parameters['page']
-    @page.setter
-    def page(self, value):
-        self.query_parameters['page'] = value
 
     @property
     def sort_order(self):
@@ -56,10 +42,24 @@ class GetPaymentOrdersAction(ChainsideAuthenticatedAction):
         self.query_parameters['page_size'] = value
 
     @property
+    def status(self):
+        return self.query_parameters['status']
+    @status.setter
+    def status(self, value):
+        self.query_parameters['status'] = value
+
+    @property
     def sort_by(self):
         return self.query_parameters['sort_by']
     @sort_by.setter
     def sort_by(self, value):
         self.query_parameters['sort_by'] = value
+
+    @property
+    def page(self):
+        return self.query_parameters['page']
+    @page.setter
+    def page(self, value):
+        self.query_parameters['page'] = value
 
 
