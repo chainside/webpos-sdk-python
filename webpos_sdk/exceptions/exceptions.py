@@ -3,59 +3,59 @@ Nigiri auto-generated file
 """
 from sdkboil.exception import SdkHttpException
 
-class TooManyRequestsException(SdkHttpException):
-    error_code = '2000'
-
-class InvalidScopeException(SdkHttpException):
-    error_code = '1013'
-
-class InvalidAccessTokenException(SdkHttpException):
-    error_code = '1007'
-
-class NotFoundException(SdkHttpException):
-    error_code = '3001'
-
 class ValidationErrorException(SdkHttpException):
     error_code = '0001'
-
-class MethodNotAllowedException(SdkHttpException):
-    error_code = '3003'
-
-class InvalidAuthorizationHeaderException(SdkHttpException):
-    error_code = '3007'
-
-class ForbiddenException(SdkHttpException):
-    error_code = '1012'
-
-class InvalidAcceptHeaderException(SdkHttpException):
-    error_code = '3013'
-
-class UnauthorizedClientException(SdkHttpException):
-    error_code = '1001'
-
-class FunctionalityDownException(SdkHttpException):
-    error_code = '4006'
-
-class InvalidRefreshTokenException(SdkHttpException):
-    error_code = '1006'
-
-class InvalidRealmException(SdkHttpException):
-    error_code = '1018'
-
-class InvalidContentTypeHeaderException(SdkHttpException):
-    error_code = '3012'
-
-class RateUnavailableException(SdkHttpException):
-    error_code = '4003'
-
-class InternalServerErrorException(SdkHttpException):
-    error_code = '4000'
 
 class InvalidCallbackException(SdkHttpException):
     error_code = '0013'
 
-class AccessTokenExpiredException(SdkHttpException):
-    error_code = '1004'
+class UnauthorizedClientException(SdkHttpException):
+    error_code = '1001'
 
 class InvalidGrantTypeException(SdkHttpException):
     error_code = '1002'
+
+class AccessTokenExpiredException(SdkHttpException):
+    error_code = '1004'
+
+class InvalidRefreshTokenException(SdkHttpException):
+    error_code = '1006'
+
+class InvalidAccessTokenException(SdkHttpException):
+    error_code = '1007'
+
+class ForbiddenException(SdkHttpException):
+    error_code = '1012'
+
+class InvalidScopeException(SdkHttpException):
+    error_code = '1013'
+
+class InvalidRealmException(SdkHttpException):
+    error_code = '1018'
+
+class TooManyRequestsException(SdkHttpException):
+    error_code = '2000'
+
+class InvalidAuthorizationHeaderException(SdkHttpException):
+    error_code = '3007'
+
+class InvalidContentTypeHeaderException(SdkHttpException):
+    error_code = '3012'
+
+class InvalidAcceptHeaderException(SdkHttpException):
+    error_code = '3013'
+
+class InternalServerErrorException(SdkHttpException):
+    error_code = '4000'
+
+class NotFoundException(SdkHttpException):
+    error_code = '3001'
+
+class MethodNotAllowedException(SdkHttpException):
+    error_code = '3003'
+
+class RateUnavailableException(SdkHttpException):
+    error_code = '4003'
+
+class FunctionalityDownException(SdkHttpException):
+    error_code = '4006'

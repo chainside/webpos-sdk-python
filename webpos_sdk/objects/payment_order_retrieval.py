@@ -2,21 +2,13 @@
 Nigiri auto-generated file
 """
 from sdkboil.object import SdkObject
-from .rate_retrieval import RateRetrieval
-from .currency_retrieval import CurrencyRetrieval
 from .payment_order_creator import PaymentOrderCreator
-from .payment_order_state import PaymentOrderState
-from .transaction import Transaction
+from .currency_retrieval import CurrencyRetrieval
+from .payment_data import PaymentData
 class PaymentOrderRetrieval(SdkObject):
     schema = {
   "rules": [],
   "schema": {
-    "address": {
-      "rules": [
-        "required"
-      ],
-      "type": "base58"
-    },
     "amount": {
       "rules": [
         "decimal",
@@ -24,16 +16,9 @@ class PaymentOrderRetrieval(SdkObject):
       ],
       "type": "string"
     },
-    "btc_amount": {
-      "rules": [
-        "required"
-      ],
-      "type": "integer"
-    },
     "callback_url": {
       "rules": [
-        "regex[https_url]:^https://",
-        "required"
+        "regex[https_url]:^https://"
       ],
       "type": "url"
     },
@@ -55,6 +40,10 @@ class PaymentOrderRetrieval(SdkObject):
         "required"
       ],
       "schema": {
+        "active": {
+          "rules": [],
+          "type": "boolean"
+        },
         "deposit_account": {
           "rules": [
             "required"
@@ -91,7 +80,7 @@ class PaymentOrderRetrieval(SdkObject):
         "type": {
           "rules": [
             "required",
-            "in:web"
+            "in:web,mobile"
           ],
           "type": "string"
         },
@@ -133,7 +122,6 @@ class PaymentOrderRetrieval(SdkObject):
     },
     "details": {
       "rules": [
-        "required",
         "nullable"
       ],
       "type": "string"
@@ -145,49 +133,279 @@ class PaymentOrderRetrieval(SdkObject):
       ],
       "type": "ISO_8601_date"
     },
-    "expiration_time": {
+    "payment_data": {
       "rules": [
-        "required"
-      ],
-      "type": "ISO_8601_date"
-    },
-    "expires_in": {
-      "rules": [
-        "required"
-      ],
-      "type": "integer"
-    },
-    "rate": {
-      "rules": [
-        "required"
+        "required",
+        "nullable"
       ],
       "schema": {
-        "created_at": {
+        "amount": {
+          "rules": [
+            "required",
+            "nullable"
+          ],
+          "type": "integer"
+        },
+        "bitcoin": {
+          "rules": [
+            "nullable"
+          ],
+          "schema": {
+            "address": {
+              "rules": [
+                "required"
+              ],
+              "type": "string"
+            },
+            "required_confirmations": {
+              "rules": [
+                "required"
+              ],
+              "type": "integer"
+            },
+            "state": {
+              "rules": [
+                "required"
+              ],
+              "schema": {
+                "blockchain_status": {
+                  "rules": [
+                    "in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback",
+                    "required"
+                  ],
+                  "type": "string"
+                },
+                "in_confirmation": {
+                  "rules": [
+                    "required",
+                    "nullable"
+                  ],
+                  "schema": {
+                    "crypto": {
+                      "rules": [
+                        "required"
+                      ],
+                      "type": "integer"
+                    },
+                    "fiat": {
+                      "rules": [
+                        "required",
+                        "decimal"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "paid": {
+                  "rules": [
+                    "required",
+                    "nullable"
+                  ],
+                  "schema": {
+                    "crypto": {
+                      "rules": [
+                        "required"
+                      ],
+                      "type": "integer"
+                    },
+                    "fiat": {
+                      "rules": [
+                        "required",
+                        "decimal"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "unpaid": {
+                  "rules": [
+                    "required",
+                    "nullable"
+                  ],
+                  "schema": {
+                    "crypto": {
+                      "rules": [
+                        "required"
+                      ],
+                      "type": "integer"
+                    },
+                    "fiat": {
+                      "rules": [
+                        "required",
+                        "decimal"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "transactions": {
+              "elements": {
+                "rules": [],
+                "schema": {
+                  "blockchain_status": {
+                    "rules": [
+                      "required",
+                      "in:mempool,unconfirmed,confirmed,reverted"
+                    ],
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "rules": [
+                      "required"
+                    ],
+                    "type": "ISO_8601_date"
+                  },
+                  "normalized_txid": {
+                    "rules": [
+                      "len:64",
+                      "required"
+                    ],
+                    "type": "string"
+                  },
+                  "outs": {
+                    "elements": {
+                      "rules": [],
+                      "schema": {
+                        "amount": {
+                          "rules": [
+                            "required"
+                          ],
+                          "type": "integer"
+                        },
+                        "n": {
+                          "rules": [
+                            "required"
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "rules": [
+                      "required"
+                    ],
+                    "type": "array"
+                  },
+                  "outs_sum": {
+                    "rules": [
+                      "required"
+                    ],
+                    "type": "integer"
+                  },
+                  "status": {
+                    "rules": [
+                      "required",
+                      "in:unconfirmed,confirmed,reverted"
+                    ],
+                    "type": "string"
+                  },
+                  "txid": {
+                    "rules": [
+                      "len:64",
+                      "required"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "rules": [
+                "required",
+                "nullable"
+              ],
+              "type": "array"
+            },
+            "uri": {
+              "rules": [
+                "required"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "expiration_time": {
           "rules": [
             "required"
           ],
           "type": "ISO_8601_date"
         },
-        "source": {
+        "expires_in": {
           "rules": [
-            "required"
+            "required",
+            "nullable"
+          ],
+          "type": "integer"
+        },
+        "ln": {
+          "rules": [
+            "nullable"
+          ],
+          "schema": {
+            "invoice": {
+              "rules": [
+                "required"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "payment_method": {
+          "rules": [
+            "required",
+            "nullable"
           ],
           "type": "string"
         },
-        "value": {
+        "rate": {
           "rules": [
-            "decimal",
-            "required"
+            "required",
+            "nullable"
           ],
-          "type": "string"
+          "schema": {
+            "created_at": {
+              "rules": [
+                "required"
+              ],
+              "type": "ISO_8601_date"
+            },
+            "from": {
+              "rules": [],
+              "type": "string"
+            },
+            "source": {
+              "rules": [
+                "required"
+              ],
+              "type": "string"
+            },
+            "to": {
+              "rules": [],
+              "type": "string"
+            },
+            "value": {
+              "rules": [
+                "decimal",
+                "required"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
         }
       },
       "type": "object"
     },
     "redirect_url": {
       "rules": [
-        "regex[https_url]:^https://",
-        "required"
+        "regex[https_url]:^https://"
       ],
       "type": "url"
     },
@@ -198,12 +416,6 @@ class PaymentOrderRetrieval(SdkObject):
       ],
       "type": "string"
     },
-    "required_confirmations": {
-      "rules": [
-        "required"
-      ],
-      "type": "integer"
-    },
     "resolved_at": {
       "rules": [
         "required",
@@ -211,173 +423,9 @@ class PaymentOrderRetrieval(SdkObject):
       ],
       "type": "ISO_8601_date"
     },
-    "state": {
+    "status": {
       "rules": [
-        "required"
-      ],
-      "schema": {
-        "blockchain_status": {
-          "rules": [
-            "in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback",
-            "required"
-          ],
-          "type": "string"
-        },
-        "in_confirmation": {
-          "rules": [
-            "required",
-            "nullable"
-          ],
-          "schema": {
-            "crypto": {
-              "rules": [
-                "required"
-              ],
-              "type": "integer"
-            },
-            "fiat": {
-              "rules": [
-                "required",
-                "decimal"
-              ],
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "paid": {
-          "rules": [
-            "required",
-            "nullable"
-          ],
-          "schema": {
-            "crypto": {
-              "rules": [
-                "required"
-              ],
-              "type": "integer"
-            },
-            "fiat": {
-              "rules": [
-                "required",
-                "decimal"
-              ],
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "status": {
-          "rules": [
-            "in:pending,paid,cancelled,expired,network_dispute,chargeback",
-            "required"
-          ],
-          "type": "string"
-        },
-        "unpaid": {
-          "rules": [
-            "required",
-            "nullable"
-          ],
-          "schema": {
-            "crypto": {
-              "rules": [
-                "required"
-              ],
-              "type": "integer"
-            },
-            "fiat": {
-              "rules": [
-                "required",
-                "decimal"
-              ],
-              "type": "string"
-            }
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "transactions": {
-      "elements": {
-        "rules": [],
-        "schema": {
-          "blockchain_status": {
-            "rules": [
-              "required",
-              "in:mempool,unconfirmed,confirmed,reverted"
-            ],
-            "type": "string"
-          },
-          "created_at": {
-            "rules": [
-              "required"
-            ],
-            "type": "ISO_8601_date"
-          },
-          "normalized_txid": {
-            "rules": [
-              "len:64",
-              "required"
-            ],
-            "type": "string"
-          },
-          "outs": {
-            "elements": {
-              "rules": [],
-              "schema": {
-                "amount": {
-                  "rules": [
-                    "required"
-                  ],
-                  "type": "integer"
-                },
-                "n": {
-                  "rules": [
-                    "required"
-                  ],
-                  "type": "integer"
-                }
-              },
-              "type": "object"
-            },
-            "rules": [
-              "required"
-            ],
-            "type": "array"
-          },
-          "outs_sum": {
-            "rules": [
-              "required"
-            ],
-            "type": "integer"
-          },
-          "status": {
-            "rules": [
-              "required",
-              "in:unconfirmed,confirmed,reverted"
-            ],
-            "type": "string"
-          },
-          "txid": {
-            "rules": [
-              "len:64",
-              "required"
-            ],
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "rules": [
-        "required",
-        "nullable"
-      ],
-      "type": "array"
-    },
-    "uri": {
-      "rules": [
+        "in:pending,paid,cancelled,expired,network_dispute,chargeback",
         "required"
       ],
       "type": "string"
@@ -392,33 +440,24 @@ class PaymentOrderRetrieval(SdkObject):
   "type": "object"
 }
     sub_objects = {
-                    'rate': RateRetrieval,
+                    'created_by': PaymentOrderCreator,
         'currency': CurrencyRetrieval,
-        'created_by': PaymentOrderCreator,
-        'state': PaymentOrderState,
-        'transactions': [Transaction],
+        'payment_data': PaymentData,
 
         }
-    def __init__(self, address,btc_amount,created_at,uri,callback_url,expires_in,redirect_url,amount,rate,required_confirmations,created_by,uuid,state,currency,expiration_time,reference=None,resolved_at=None,dispute_start_date=None,chargeback_date=None,transactions=None,details=None):
+    def __init__(self, amount,created_at,created_by,currency,status,uuid,callback_url=None,details=None,redirect_url=None,reference=None,resolved_at=None,payment_data=None,dispute_start_date=None,chargeback_date=None):
         super().__init__()
-        self.address = address
-        self.reference = reference
-        self.btc_amount = btc_amount
-        self.resolved_at = resolved_at
-        self.created_at = created_at
-        self.uri = uri
-        self.dispute_start_date = dispute_start_date
-        self.callback_url = callback_url
-        self.expires_in = expires_in
-        self.redirect_url = redirect_url
         self.amount = amount
-        self.rate = rate
-        self.chargeback_date = chargeback_date
-        self.required_confirmations = required_confirmations
+        self.callback_url = callback_url
+        self.created_at = created_at
         self.created_by = created_by
-        self.uuid = uuid
-        self.state = state
         self.currency = currency
-        self.transactions = transactions
-        self.expiration_time = expiration_time
         self.details = details
+        self.redirect_url = redirect_url
+        self.reference = reference
+        self.resolved_at = resolved_at
+        self.status = status
+        self.uuid = uuid
+        self.payment_data = payment_data
+        self.dispute_start_date = dispute_start_date
+        self.chargeback_date = chargeback_date

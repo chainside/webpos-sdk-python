@@ -60,13 +60,6 @@ class PaymentOrderState(SdkObject):
       },
       "type": "object"
     },
-    "status": {
-      "rules": [
-        "in:pending,paid,cancelled,expired,network_dispute,chargeback",
-        "required"
-      ],
-      "type": "string"
-    },
     "unpaid": {
       "rules": [
         "required",
@@ -98,10 +91,9 @@ class PaymentOrderState(SdkObject):
         'unpaid': PaidStatus,
 
         }
-    def __init__(self, status,blockchain_status,in_confirmation=None,unpaid=None,paid=None):
+    def __init__(self, blockchain_status,in_confirmation=None,paid=None,unpaid=None):
         super().__init__()
         self.in_confirmation = in_confirmation
-        self.unpaid = unpaid
-        self.status = status
         self.paid = paid
         self.blockchain_status = blockchain_status
+        self.unpaid = unpaid

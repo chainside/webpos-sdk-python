@@ -192,10 +192,10 @@ class BitcoinPaymentData(SdkObject):
         'state': PaymentOrderState,
 
         }
-    def __init__(self, uri,address,required_confirmations,state,transactions=None):
+    def __init__(self, address,uri,state,required_confirmations,transactions=None):
         super().__init__()
+        self.address = address
         self.uri = uri
         self.transactions = transactions
-        self.address = address
-        self.required_confirmations = required_confirmations
         self.state = state
+        self.required_confirmations = required_confirmations

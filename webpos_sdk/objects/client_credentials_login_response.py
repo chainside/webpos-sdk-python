@@ -44,10 +44,10 @@ class ClientCredentialsLoginResponse(SdkObject):
     sub_objects = {
             
         }
-    def __init__(self, id_token,expires_in,access_token,token_type,scope=None):
+    def __init__(self, access_token,expires_in,id_token,token_type,scope=None):
         super().__init__()
-        self.scope = scope
-        self.id_token = id_token
-        self.expires_in = expires_in
         self.access_token = access_token
+        self.expires_in = expires_in
+        self.id_token = id_token
         self.token_type = token_type
+        self.scope = scope

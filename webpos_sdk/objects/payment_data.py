@@ -2,9 +2,9 @@
 Nigiri auto-generated file
 """
 from sdkboil.object import SdkObject
+from .rate_retrieval import RateRetrieval
 from .bitcoin_payment_data import BitcoinPaymentData
 from .ln_payment_data import LnPaymentData
-from .rate_retrieval import RateRetrieval
 class PaymentData(SdkObject):
     schema = {
   "rules": [],
@@ -274,17 +274,17 @@ class PaymentData(SdkObject):
   "type": "object"
 }
     sub_objects = {
-                    'bitcoin': BitcoinPaymentData,
+                    'rate': RateRetrieval,
+        'bitcoin': BitcoinPaymentData,
         'ln': LnPaymentData,
-        'rate': RateRetrieval,
 
         }
-    def __init__(self, expiration_time,payment_method=None,bitcoin=None,expires_in=None,ln=None,amount=None,rate=None):
+    def __init__(self, expiration_time,payment_method=None,amount=None,rate=None,expires_in=None,bitcoin=None,ln=None):
         super().__init__()
-        self.expiration_time = expiration_time
         self.payment_method = payment_method
-        self.bitcoin = bitcoin
-        self.expires_in = expires_in
-        self.ln = ln
+        self.expiration_time = expiration_time
         self.amount = amount
         self.rate = rate
+        self.expires_in = expires_in
+        self.bitcoin = bitcoin
+        self.ln = ln

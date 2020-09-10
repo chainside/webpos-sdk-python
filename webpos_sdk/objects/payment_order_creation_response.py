@@ -38,9 +38,9 @@ class PaymentOrderResponse(SdkObject):
     sub_objects = {
             
         }
-    def __init__(self, uuid,redirect_url=None,reference=None,created_at=None):
+    def __init__(self, uuid,redirect_url=None,created_at=None,reference=None):
         super().__init__()
         self.redirect_url = redirect_url
         self.uuid = uuid
-        self.reference = reference
         self.created_at = created_at
+        self.reference = reference
