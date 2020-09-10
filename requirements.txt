@@ -1,2 +1,2 @@
-moveax-sdk-boilerplate==1.1.0
+moveax-sdk-boilerplate==1.2.0
 
