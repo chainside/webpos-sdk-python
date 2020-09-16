@@ -11,7 +11,8 @@ from sdkboil import headers
 class HeadersHook(PresendHook):
     def run(self):
         self.request.headers[API_VERSION_HEADER] = self.context.version
-
+        self.request.headers[ACCEPT] = 'application/json'
+        self.request.headers[CONTENT_TYPE] = 'application/json'
 
 class AuthorizationHook(PresendHook):
     def run(self):

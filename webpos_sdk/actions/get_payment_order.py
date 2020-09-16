@@ -12,11 +12,7 @@ from ..exceptions import *
 class GetPaymentOrderAction(ChainsideAuthenticatedAction):
     route = '/payment-order/{payment_order_uuid}'
     verb = 'GET'
-    headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "X-Api-Version": "v1"
-}
+    headers = {}
     query_parameters_schema = {}
     route_parameters_schema = {'payment_order_uuid': {'type': 'uuid', 'rules': ['required']}}
     request_body_class = None

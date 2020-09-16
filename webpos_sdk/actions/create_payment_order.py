@@ -12,11 +12,7 @@ from ..exceptions import *
 class CreatePaymentOrderAction(ChainsideAuthenticatedAction):
     route = '/payment-order'
     verb = 'POST'
-    headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "X-Api-Version": "v1"
-}
+    headers = {}
     query_parameters_schema = {}
     route_parameters_schema = {}
     request_body_class = PaymentOrder

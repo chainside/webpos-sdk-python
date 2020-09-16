@@ -12,11 +12,7 @@ from ..exceptions import *
 class ClientCredentialsLoginAction(ChainsideAuthenticatingAction):
     route = '/token'
     verb = 'POST'
-    headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/x-www-form-urlencoded",
-    "X-Api-Version": "v1"
-}
+    headers = {}
     query_parameters_schema = {}
     route_parameters_schema = {}
     request_body_class = ClientCredentials

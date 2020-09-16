@@ -12,11 +12,7 @@ from ..exceptions import *
 class GetPaymentOrdersAction(ChainsideAuthenticatedAction):
     route = '/payment-order'
     verb = 'GET'
-    headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "X-Api-Version": "v1"
-}
+    headers = {}
     query_parameters_schema = {'status': {'type': 'string', 'rules': ['in:pending,partial,mempool_unconfirmed,unconfirmed,paid,cancelled,expired,network_dispute,mempool_network_dispute,possible_chargeback,chargeback'], 'description': 'Status of the payment orders to retrieve'}, 'sort_by': {'type': 'string', 'rules': ['in:amount,created_at', 'nullable'], 'description': 'Field used to sort pages (default: created_at)'}, 'sort_order': {'type': 'string', 'rules': ['in:asc,desc', 'nullable'], 'description': 'Ordering to be used for the sort (default: desc)'}, 'page': {'type': 'integer', 'rules': ['nullable', 'min:0'], 'description': 'Index of the page to be returned (default: 0)'}, 'page_size': {'type': 'integer', 'rules': ['nullable', 'max:40'], 'description': 'Size of the returned page (default: 20)'}}
     route_parameters_schema = {}
     request_body_class = None

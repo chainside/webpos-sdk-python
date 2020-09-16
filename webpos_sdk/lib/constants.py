@@ -7,3 +7,6 @@ DICT_CACHE = 'dict'
 
 CHAINSIDE_API_HOSTNAME = 'https://api.webpos.chainside.net'
 CHAINSIDE_SANDBOX_API_HOSTAME = 'https://api.sandbox.webpos.chainside.net'
+
+ACCEPT = 'Accept'
+CONTENT_TYPE = 'Content-Type'
